@@ -1,10 +1,13 @@
 import './App.scss';
-import Test from './components/Test';
+import GetMessage from './components/GetMessage';
+import SendMessage from './components/SendMessage';
 
 function App() {
   return (
     <div className="App">
-      <Test/>
+      <SendMessage/>
+      <hr/>
+      <GetMessage/>
     </div>
   );
 }

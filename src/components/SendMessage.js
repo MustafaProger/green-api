@@ -24,7 +24,7 @@ function fetchInfo(
 	};
 }
 
-function Test() {
+function SendMessage() {
 	const { loading, request, error, clearError } = useHttp();
 
 	const [contact, setContact] = useState("79680603084");
@@ -44,23 +44,21 @@ function Test() {
 	}
 
 	return (
-		<>
-			<div className='send-message'>
-				<input
-					type='phone'
-					placeholder='Enter contact (only digits)'
-					onChange={(e) => setContact(e.target.value)}
-				/>
+		<div className='send-message'>
+			<input
+				type='phone'
+				placeholder='Enter contact (only digits)'
+				onChange={(e) => setContact(e.target.value)}
+			/>
 
-				<input
-					type='text'
-					placeholder='Enter message'
-					onChange={(e) => setTextMessage(e.target.value)}
-				/>
-				<button onClick={sendMessage}>Send</button>
-			</div>
-		</>
+			<input
+				type='text'
+				placeholder='Enter message'
+				onChange={(e) => setTextMessage(e.target.value)}
+			/>
+			<button onClick={sendMessage}>Send</button>
+		</div>
 	);
 }
 
-export default Test;
+export default SendMessage;
