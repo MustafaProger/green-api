@@ -1,5 +1,6 @@
 import './App.scss';
 import GetMessage from './components/GetMessage';
+import LoginForm from './components/logIn/LogForm';
 import SendMessage from './components/SendMessage';
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
       <SendMessage/>
       <hr/>
       <GetMessage/>
+      <hr/>
+      <LoginForm/>
     </div>
   );
 }
