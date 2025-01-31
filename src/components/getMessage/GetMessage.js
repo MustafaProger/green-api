@@ -16,6 +16,8 @@ const GetMessage = ({ activeChat, chats, onReceiveMessage }) => {
 					`https://api.green-api.com/waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`
 				);
 
+				console.log(response);
+
 				if (response?.body) {
 					const { typeWebhook, messageData, senderData } = response.body;
 

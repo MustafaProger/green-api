@@ -1,8 +1,8 @@
 import { useState } from "react";
 import NewChat from "../newChat/NewChat";
-import "./ChatPage.scss";
+import "./ChatList.scss";
 
-const ChatPage = () => {
+const ChatList = () => {
 	const [activeChat, setActiveChat] = useState(null);
 
 	return (
@@ -19,4 +19,4 @@ const ChatPage = () => {
 	);
 };
 
-export default ChatPage;
+export default ChatList;

@@ -10,7 +10,7 @@ const SidePanel = () => {
 		<div className='side-panel'>
 			<div
 				className='panel-item'
-				onClick={handleStoriesClick}>
+				onClick={handleChatsClick}>
 				<span className='icon'>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
@@ -25,7 +25,7 @@ const SidePanel = () => {
 
 			<div
 				className='panel-item'
-				onClick={handleChatsClick}>
+				onClick={handleStoriesClick}>
 				<span className='icon'>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
