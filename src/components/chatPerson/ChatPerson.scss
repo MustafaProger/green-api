@@ -7,9 +7,9 @@
 	background-color: #efece4;
 
 	&__wrapper {
-		height: calc(100vh + 30px);
+		height: 100vh;
 		display: grid;
-		grid-template-rows: 60px 1fr auto;
+		grid-template-rows: 68px 1fr auto;
 	}
 
 	.title {
@@ -17,7 +17,6 @@
 		background-color: #eff2f5;
 		padding: 20px;
 	}
-
 
 	.send-message {
 		padding: 20px;

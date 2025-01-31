@@ -57,7 +57,6 @@ const SidePanel = () => {
 						</g>
 					</svg>
 				</span>
-				{/* <span className="label">Настройки</span> */}
 			</div>
 		</div>
 	);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LoginForm.scss";
 import Modal from "../common/Modal";
+import "./LoginForm.scss";
 
 export default function LoginForm({ onLogin }) {
 	const [idInstance, setIdInstance] = useState("");

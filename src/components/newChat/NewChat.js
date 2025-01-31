@@ -9,12 +9,10 @@ const NewChat = ({ onChatCreated }) => {
 
 	const handleCreateChat = async () => {
 		try {
-			// Проверка формата номера
 			if (!/^\d{11,12}$/.test(phone)) {
 				throw new Error("Неверный формат номера");
 			}
 
-			// Проверка регистрации в WhatsApp
 			const { idInstance, apiTokenInstance } = JSON.parse(
 				localStorage.getItem("credentials")
 			);
@@ -29,7 +27,6 @@ const NewChat = ({ onChatCreated }) => {
 				throw new Error("Номер не зарегистрирован в WhatsApp");
 			}
 
-			// Сохраняем активный чат
 			onChatCreated(phone);
 			setError("");
 		} catch (e) {

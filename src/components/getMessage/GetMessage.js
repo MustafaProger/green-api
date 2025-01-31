@@ -38,12 +38,10 @@ const GetMessage = ({ activeChat, chats, onReceiveMessage }) => {
 								timestamp: new Date().toLocaleTimeString(),
 							};
 
-							// Передаем новое сообщение в родительский компонент
 							onReceiveMessage(activeChat, newMessage);
 						}
 					}
 
-					// Удаляем уведомление после обработки
 					await request(
 						`https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${response.receiptId}`,
 						"DELETE"

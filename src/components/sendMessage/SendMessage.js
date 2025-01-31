@@ -6,12 +6,13 @@ const SendMessage = ({ activeChat, onSend }) => {
 	const [message, setMessage] = useState("");
 
 	const handleSend = async () => {
+		if (!message.trim()) return;
+
 		try {
 			const { idInstance, apiTokenInstance } = JSON.parse(
 				localStorage.getItem("credentials")
 			);
 
-			// Отправляем сообщение через Green API
 			await request(
 				`https://api.green-api.com/waInstance${idInstance}/SendMessage/${apiTokenInstance}`,
 				"POST",
@@ -21,12 +22,17 @@ const SendMessage = ({ activeChat, onSend }) => {
 				})
 			);
 
-			// Передаем сообщение в родительский компонент
 			onSend(activeChat, message);
 
 			setMessage("");
 		} catch (e) {
 			console.error("Ошибка отправки:", e);
+		}
+	};
+
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter") {
+			handleSend();
 		}
 	};
 
@@ -36,6 +42,7 @@ const SendMessage = ({ activeChat, onSend }) => {
 				type='text'
 				value={message}
 				onChange={(e) => setMessage(e.target.value)}
+				onKeyDown={handleKeyDown}
 				placeholder='Введите сообщение'
 				disabled={!activeChat}
 			/>
