@@ -1,18 +1,49 @@
-import './App.scss';
-import GetMessage from './components/GetMessage';
-import LoginForm from './components/logIn/LogForm';
-import SendMessage from './components/SendMessage';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "./App.scss";
+import LoginForm from "./components/loginForm/LoginForm";
+import ChatPage from "./components/chatPage/ChatPage";
 
 function App() {
-  return (
-    <div className="App">
-      <SendMessage/>
-      <hr/>
-      <GetMessage/>
-      <hr/>
-      <LoginForm/>
-    </div>
-  );
+	const [isAuth, setIsAuth] = useState(false);
+
+	useEffect(() => {
+		const credentials = localStorage.getItem("credentials");
+		setIsAuth(!!credentials);
+	}, []);
+
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route
+					path='/'
+					element={
+						isAuth ? (
+							<Navigate
+								to='/chat'
+								replace
+							/>
+						) : (
+							<LoginForm onLogin={() => setIsAuth(true)} />
+						)
+					}
+				/>
+				<Route
+					path='/chat'
+					element={
+						isAuth ? (
+							<ChatPage />
+						) : (
+							<Navigate
+								to='/'
+								replace
+							/>
+						)
+					}
+				/>
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
