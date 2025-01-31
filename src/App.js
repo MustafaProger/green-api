@@ -1,13 +1,40 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./App.scss";
 import LoginForm from "./components/loginForm/LoginForm";
 import ChatPage from "./components/chatPage/ChatPage";
 import SidePanel from "./components/sidePanel/SidePanel";
+import ChatPerson from "./components/chatPerson/ChatPerson";
+
+import "./App.scss";
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);
-	
+
+	const [chats, setChats] = useState([
+		{
+			phone: "79060972399",
+			messages: [
+				// Сообщения в этом чате
+				{ text: "Привет", from: "me", timestamp: "22:08:34" },
+				{ text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+				{ text: "Как дела?", from: "me", timestamp: "22:08:39" },
+				{ text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
+
+			],
+		},
+	]);
 
 	useEffect(() => {
 		const credentials = localStorage.getItem("credentials");
@@ -16,7 +43,7 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<SidePanel/>
+			<SidePanel />
 
 			<Routes>
 				<Route
@@ -36,7 +63,16 @@ function App() {
 					path='/chat'
 					element={
 						isAuth ? (
-							<ChatPage />
+							<>
+								<ChatPage
+									chats={chats}
+									setChats={setChats}
+								/>
+								<ChatPerson
+									chats={chats}
+									setChats={setChats}
+								/>
+							</>
 						) : (
 							<Navigate
 								to='/'

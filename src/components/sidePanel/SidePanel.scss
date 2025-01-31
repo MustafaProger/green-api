@@ -1,7 +1,9 @@
+/* SidePanel.css */
 .side-panel {
-	width: 80px;
-	height: 90vh;
-	background: #f0f2f5;
+	width: 80px; /* Ширина панели */
+	height: 90vh; /* На всю высоту экрана */
+	background: #f0f2f5; /* Цвет фона, как в WhatsApp */
+	border-right: 1px solid #d1d7db; /* Граница справа */
 	position: fixed;
 	display: grid;
 	grid-template-rows: 40px 40px 1fr;
@@ -26,15 +28,15 @@
 }
 
 .panel-item:hover svg {
-	fill: #25d366;
+	fill: #0CC144;
 }
 
 .icon {
-	font-size: 24px;
-	margin-bottom: 8px;
+	font-size: 24px; /* Размер иконки */
+	margin-bottom: 8px; /* Отступ между иконкой и текстом */
 }
 
 .label {
-	font-size: 14px;
-	color: #333
+	font-size: 14px; /* Размер текста */
+	color: #333; /* Цвет текста */
 }
