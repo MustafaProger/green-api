@@ -1,38 +1,69 @@
+import GetMessage from "../getMessage/GetMessage";
 import SendMessage from "../sendMessage/SendMessage";
 import "./ChatPerson.scss";
 
 const ChatPerson = ({ chats, setChats }) => {
+	const handleSendMessage = (phone, message) => {
+		setChats((prev) =>
+			prev.map((chat) =>
+				chat.phone === phone
+					? {
+							...chat,
+							messages: [
+								...chat.messages,
+								{
+									text: message,
+									from: "me",
+									timestamp: new Date().toLocaleTimeString(),
+								},
+							],
+					  }
+					: chat
+			)
+		);
+	};
+
+	const handleReceiveMessage = (phone, message) => {
+		setChats((prev) =>
+			prev.map((chat) =>
+				chat.phone === phone
+					? {
+							...chat,
+							messages: [
+								...chat.messages,
+								{
+									text: message.text,
+									from: message.from,
+									timestamp: message.timestamp,
+								},
+							],
+					  }
+					: chat
+			)
+		);
+	};
+
 	return (
-		<>
-			<div className='chat-person'>
-				{chats.map((item) => {
-					return (
-						<div className='chat-person__wrapper'>
-							<h3 className='title'>{item.phone}</h3>
-							<div class='messages'>
-								{item.messages.map((message) => {
-									return (
-										<div
-											className={`messages__item ${
-												message.from === "me" ? "me" : "person"
-											}`}>
-											<div className='text'>{message.text}</div>
-											<div className='time'>
-												{message.timestamp.slice(0, 5)}
-											</div>
-										</div>
-									);
-								})}
-							</div>
-							<SendMessage
-								activeChat={item.phone}
-								setChats={setChats}
-							/>
-						</div>
-					);
-				})}
-			</div>
-		</>
+		<div className='chat-person'>
+			{chats.map((item, indexItem) => (
+				<div
+					key={indexItem}
+					className='chat-person__wrapper'>
+					<h3 className='title'>{item.phone}</h3>
+					<div className='messages'>
+						<GetMessage
+							activeChat={item.phone}
+							chats={chats}
+							onReceiveMessage={handleReceiveMessage}
+						/>
+					</div>
+					<SendMessage
+						activeChat={item.phone}
+						onSend={handleSendMessage}
+					/>
+				</div>
+			))}
+		</div>
 	);
 };
 

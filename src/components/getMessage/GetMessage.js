@@ -1,35 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useHttp } from "../../hooks/http.hook";
+import "./GetMessage.scss";
 
-const GetMessage = ({ activeChat }) => {
+const GetMessage = ({ activeChat, chats, onReceiveMessage }) => {
 	const { request } = useHttp();
-	const [messages, setMessages] = useState([
-		{
-			text: "привет",
-			from: "79060972399",
-			timestamp: "22:08:34",
-		},
-		{
-			text: "как дела твои?",
-			from: "79060972399",
-			timestamp: "22:08:39",
-		},
-		{
-			text: "что делаешь?",
-			from: "79060972399",
-			timestamp: "22:08:44",
-		},
-		{
-			text: "все нормально",
-			from: "79060972399",
-			timestamp: "22:08:49",
-		},
-		{
-			text: "сам как?",
-			from: "79060972399",
-			timestamp: "22:08:54",
-		},
-	]);
 
 	useEffect(() => {
 		const fetchMessages = async () => {
@@ -42,16 +16,12 @@ const GetMessage = ({ activeChat }) => {
 					`https://api.green-api.com/waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`
 				);
 
-				console.log(response);
-
 				if (response?.body) {
 					const { typeWebhook, messageData, senderData } = response.body;
 
 					if (
 						typeWebhook === "incomingMessageReceived" ||
-						typeWebhook === "incomingAPIReceived" ||
-						typeWebhook === "outgoingMessageReceived" ||
-						typeWebhook === "outgoingAPIMessageReceived"
+						typeWebhook === "incomingAPIReceived"
 					) {
 						let text = "";
 
@@ -68,19 +38,16 @@ const GetMessage = ({ activeChat }) => {
 								timestamp: new Date().toLocaleTimeString(),
 							};
 
-							setMessages((prev) => [...prev, newMessage]);
+							// Передаем новое сообщение в родительский компонент
+							onReceiveMessage(activeChat, newMessage);
 						}
-						// Удаляем уведомление после обработки
-						await request(
-							`https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${response.receiptId}`,
-							"DELETE"
-						);
-					} else {
-						await request(
-							`https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${response.receiptId}`,
-							"DELETE"
-						);
 					}
+
+					// Удаляем уведомление после обработки
+					await request(
+						`https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${response.receiptId}`,
+						"DELETE"
+					);
 				}
 			} catch (e) {
 				console.error("Ошибка получения сообщений:", e);
@@ -89,20 +56,20 @@ const GetMessage = ({ activeChat }) => {
 
 		const interval = setInterval(fetchMessages, 5000);
 		return () => clearInterval(interval);
-	}, [activeChat]);
+	}, [activeChat, onReceiveMessage, request]);
+
+	const activeChatData = chats?.find((chat) => chat.phone === activeChat);
 
 	return (
 		<div className='messages'>
-			{messages
-				.filter((msg) => msg.from === activeChat)
-				.map((msg, i) => (
-					<div
-						key={i}
-						className={`message`}>
-						<span className='time'>{msg.timestamp}</span>
-						<div className='text'>{msg.text}</div>
-					</div>
-				))}
+			{activeChatData?.messages.map((msg, i) => (
+				<div
+					key={i}
+					className={`message ${msg.from === "me" ? "my" : ""}`}>
+					<div className='text'>{msg.text}</div>
+					<div className='time'>{msg.timestamp.slice(0, 5)}</div>
+				</div>
+			))}
 		</div>
 	);
 };

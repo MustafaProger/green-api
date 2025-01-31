@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHttp } from "../../hooks/http.hook";
 
 const SendMessage = ({ activeChat, onSend }) => {
@@ -11,6 +11,7 @@ const SendMessage = ({ activeChat, onSend }) => {
 				localStorage.getItem("credentials")
 			);
 
+			// Отправляем сообщение через Green API
 			await request(
 				`https://api.green-api.com/waInstance${idInstance}/SendMessage/${apiTokenInstance}`,
 				"POST",
@@ -19,6 +20,9 @@ const SendMessage = ({ activeChat, onSend }) => {
 					message,
 				})
 			);
+
+			// Передаем сообщение в родительский компонент
+			onSend(activeChat, message);
 
 			setMessage("");
 		} catch (e) {

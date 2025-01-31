@@ -12,29 +12,13 @@ function App() {
 
 	const [chats, setChats] = useState([
 		{
-			phone: "79060972399",
-			messages: [
-				// Сообщения в этом чате
-				{ text: "Привет", from: "me", timestamp: "22:08:34" },
-				{ text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
-				{ text: "Как дела?", from: "me", timestamp: "22:08:39" },
-				{ text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
-				// { text: "Как дела?", from: "me", timestamp: "22:08:39" },
-
-			],
+		  phone: "79060972399",
+		  messages: [
+			{ text: "Привет", from: "me", timestamp: "22:08:34" },
+			{ text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+		  ],
 		},
-	]);
+	  ]);
 
 	useEffect(() => {
 		const credentials = localStorage.getItem("credentials");
