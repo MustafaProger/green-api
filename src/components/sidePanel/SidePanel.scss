@@ -1,42 +1,43 @@
 /* SidePanel.css */
 .side-panel {
 	width: 80px; /* Ширина панели */
-	height: 90vh; /* На всю высоту экрана */
+	height: 100vh; /* На всю высоту экрана */
 	background: #f0f2f5; /* Цвет фона, как в WhatsApp */
 	border-right: 1px solid #d1d7db; /* Граница справа */
 	position: fixed;
 	display: grid;
-	grid-template-rows: 40px 40px 1fr;
+	grid-template-rows: 60px 60px 1fr;
 	flex-direction: column;
 	align-items: end;
-	gap: 20px;
-	padding: 50px 0;
-}
+	gap: 0px;
+	padding: 50px 0 0 0;
 
-.panel-item {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	cursor: pointer;
-	padding: 10px;
-	border-radius: 8px;
-	transition: all 0.25s;
-
-	svg {
+	.panel-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		cursor: pointer;
+		padding: 10px;
+		height: 80px;
+		border-radius: 8px;
 		transition: all 0.25s;
+
+		svg {
+			transition: all 0.25s;
+		}
 	}
-}
 
-.panel-item:hover svg {
-	fill: #0CC144;
-}
+	.panel-item:hover svg {
+		fill: #0cc144;
+	}
 
-.icon {
-	font-size: 24px; /* Размер иконки */
-	margin-bottom: 8px; /* Отступ между иконкой и текстом */
-}
+	.icon {
+		font-size: 24px; /* Размер иконки */
+		margin-bottom: 8px; /* Отступ между иконкой и текстом */
+	}
 
-.label {
-	font-size: 14px; /* Размер текста */
-	color: #333; /* Цвет текста */
+	.label {
+		font-size: 14px; /* Размер текста */
+		color: #333; /* Цвет текста */
+	}
 }

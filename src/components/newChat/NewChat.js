@@ -38,11 +38,11 @@ const NewChat = ({ onChatCreated }) => {
 		<div className='new-chat'>
 			<input
 				type='tel'
-				placeholder='Введите номер получателя (79123456789)'
+				placeholder='Введите номер (79123456789)'
 				value={phone}
 				onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
 			/>
-			<button onClick={handleCreateChat}>Создать чат</button>
+			<button onClick={handleCreateChat}>+ Создать чат</button>
 
 			{error && <div className='error-message'>{error}</div>}
 		</div>

@@ -1,0 +1,27 @@
+.send-message {
+	padding: 20px;
+	margin-bottom: auto;
+	background-color: #eff2f5;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	input {
+		width: 80%;
+		padding: 10px;
+		border: none;
+		border-radius: 10px;
+		outline: none;
+	}
+	button {
+		cursor: pointer;
+		border: none;
+		border-radius: 10px;
+		color: white;
+		background-color: #0cc144;
+
+		&[disabled] {
+			background-color: #f0f1f3;
+			color: grey;
+		}
+	}
+}

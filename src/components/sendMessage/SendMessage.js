@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHttp } from "../../hooks/http.hook";
+import "./SendMessage.scss";
 
 const SendMessage = ({ activeChat, onSend }) => {
 	const { request } = useHttp();

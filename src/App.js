@@ -11,13 +11,13 @@ function App() {
 	const [isAuth, setIsAuth] = useState(false);
 
 	const [chats, setChats] = useState([
-		// {
-		// 	phone: "79060972399",
-		// 	messages: [
-		// 		{ text: "Привет", from: "me", timestamp: "22:08:34" },
-		// 		{ text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
-		// 	],
-		// },
+		{
+			phone: "79060972399",
+			messages: [
+				{ text: "Привет", from: "me", timestamp: "22:08:34" },
+				{ text: "Как дела?", from: "79060972399", timestamp: "22:08:39" },
+			],
+		},
 	]);
 
 	useEffect(() => {

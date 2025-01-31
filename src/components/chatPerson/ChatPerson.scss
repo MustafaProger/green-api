@@ -2,9 +2,8 @@
 	position: absolute;
 	right: 0;
 	top: 0;
-	width: calc(100% - 421px);
+	width: calc(100% - 480px);
 	height: 100%;
-	margin: 0 0 0 auto;
 	background-color: #efece4;
 
 	&__wrapper {
@@ -17,33 +16,5 @@
 		margin: 0;
 		background-color: #eff2f5;
 		padding: 20px;
-	}
-
-	.send-message {
-		padding: 20px;
-		margin-bottom: auto;
-		background-color: #eff2f5;
-		display: flex;
-		justify-content: center;
-		gap: 10px;
-		input {
-			width: 80%;
-			padding: 10px;
-			border: none;
-			border-radius: 10px;
-			outline: none;
-		}
-		button {
-			cursor: pointer;
-			border: none;
-			border-radius: 10px;
-			color: white;
-			background-color: #0cc144;
-
-			&[disabled] {
-				background-color: #F0F1F3;
-				color: grey;
-			}
-		}
 	}
 }
