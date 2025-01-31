@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import "./App.scss";
 import LoginForm from "./components/loginForm/LoginForm";
 import ChatPage from "./components/chatPage/ChatPage";
+import SidePanel from "./components/sidePanel/SidePanel";
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);
+	
 
 	useEffect(() => {
 		const credentials = localStorage.getItem("credentials");
@@ -14,6 +16,8 @@ function App() {
 
 	return (
 		<BrowserRouter>
+			<SidePanel/>
+
 			<Routes>
 				<Route
 					path='/'

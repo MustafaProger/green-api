@@ -10,6 +10,7 @@ const ChatPage = () => {
 
 	return (
 		<div className='chat-container'>
+			<h2>Чаты</h2>
 			{!activeChat ? (
 				<NewChat onChatCreated={setActiveChat} />
 			) : (

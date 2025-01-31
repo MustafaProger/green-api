@@ -3,7 +3,33 @@ import { useHttp } from "../../hooks/http.hook";
 
 const GetMessage = ({ activeChat }) => {
 	const { request } = useHttp();
-	const [messages, setMessages] = useState([]);
+	const [messages, setMessages] = useState([
+		{
+			text: "привет",
+			from: "79060972399",
+			timestamp: "22:08:34",
+		},
+		{
+			text: "как дела твои?",
+			from: "79060972399",
+			timestamp: "22:08:39",
+		},
+		{
+			text: "что делаешь?",
+			from: "79060972399",
+			timestamp: "22:08:44",
+		},
+		{
+			text: "все нормально",
+			from: "79060972399",
+			timestamp: "22:08:49",
+		},
+		{
+			text: "сам как?",
+			from: "79060972399",
+			timestamp: "22:08:54",
+		},
+	]);
 
 	useEffect(() => {
 		const fetchMessages = async () => {
@@ -72,7 +98,7 @@ const GetMessage = ({ activeChat }) => {
 				.map((msg, i) => (
 					<div
 						key={i}
-						className='message'>
+						className={`message`}>
 						<span className='time'>{msg.timestamp}</span>
 						<div className='text'>{msg.text}</div>
 					</div>

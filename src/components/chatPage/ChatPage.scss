@@ -2,7 +2,11 @@
 .chat-container {
 	display: flex;
 	flex-direction: column;
+	width: 300px;
 	height: 100vh;
+	margin-left: 80px;
+	padding: 15px 20px;
+	background-color: #eaebec;
 
 	.chat-header {
 		padding: 1rem;
@@ -36,13 +40,3 @@
 	}
 }
 
-.new-chat {
-	padding: 2rem;
-	text-align: center;
-
-	input {
-		margin-right: 1rem;
-		padding: 0.5rem;
-		width: 300px;
-	}
-}

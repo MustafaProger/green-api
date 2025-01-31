@@ -1,0 +1,12 @@
+.new-chat {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+	input {
+		margin-right: 1rem;
+		padding: 0.5rem;
+	}
+}
