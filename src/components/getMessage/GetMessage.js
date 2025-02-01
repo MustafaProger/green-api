@@ -62,7 +62,7 @@ const GetMessage = ({ activeChat, chats, onReceiveMessage }) => {
 
 	return (
 		<div className='messages'>
-			{activeChatData?.messages.map((msg, i) => (
+			{activeChatData?.messages?.map((msg, i) => (
 				<div
 					key={i}
 					className={`message ${msg.from === "me" ? "my" : ""}`}>

@@ -38,7 +38,7 @@ const ChatList = ({ chats, setChats }) => {
 				})}
 			</div>
 
-			<NewChat />
+			<NewChat setChats={setChats}/>
 		</div>
 	);
 };

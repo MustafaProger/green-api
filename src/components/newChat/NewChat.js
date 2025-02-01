@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useHttp } from "../../hooks/http.hook";
-import './NewChat.scss'
+import "./NewChat.scss";
 
-const NewChat = ({ onChatCreated }) => {
+const NewChat = ({ setChats }) => {
 	const [phone, setPhone] = useState("79060972399");
 	const [error, setError] = useState("");
 	const { request } = useHttp();
@@ -27,7 +27,25 @@ const NewChat = ({ onChatCreated }) => {
 				throw new Error("Номер не зарегистрирован в WhatsApp");
 			}
 
-			onChatCreated(phone);
+			setChats((prev) => {
+				let phoneExists = false;
+				const updatedChats = prev.map((item) => {
+					if (item.phone === phone) {
+						phoneExists = true;
+						alert("Данный номер уже есть в списке!");
+						return item;
+					} else {
+						return item;
+					}
+				});
+
+				if (!phoneExists) {
+					return [...updatedChats, { phone, messages: [] }];
+				}
+
+				return updatedChats;
+			});
+
 			setError("");
 		} catch (e) {
 			setError(e.message);
