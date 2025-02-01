@@ -25,7 +25,7 @@ function App() {
 	}, []);
 
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename="green-api">
 			{isAuth ? <SidePanel /> : null}
 
 			<Routes>
