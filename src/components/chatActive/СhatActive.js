@@ -44,7 +44,6 @@ const ChatActive = ({ chats, activeChat, setChats }) => {
 		);
 	};
 
-	// Находим активный чат
 	const activeChatData = chats.find((chat) => chat.phone === activeChat?.phone);
 
 	return (
@@ -71,7 +70,6 @@ const ChatActive = ({ chats, activeChat, setChats }) => {
 				<DownloadWhatsApp />
 			)}
 
-			{/* GetMessage теперь только обрабатывает входящие сообщения */}
 			<GetMessage
 				chats={chats}
 				onReceiveMessage={handleReceiveMessage}
