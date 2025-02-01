@@ -26,7 +26,7 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<SidePanel />
+			{isAuth ? <SidePanel /> : null}
 
 			<Routes>
 				<Route
