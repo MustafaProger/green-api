@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useHttp } from "../../hooks/http.hook";
 import "./GetMessage.scss";
 
-const GetMessage = ({ activeChat, chats, onReceiveMessage }) => {
+const GetMessage = ({ chats, onReceiveMessage }) => {
 	const { request } = useHttp();
 
 	useEffect(() => {
@@ -36,11 +36,14 @@ const GetMessage = ({ activeChat, chats, onReceiveMessage }) => {
 						if (text) {
 							const newMessage = {
 								text: text,
-								from: senderData.chatId.replace("@c.us", ""),
+								from: senderData.chatId.replace("@c.us", ""), 
 								timestamp: new Date().toLocaleTimeString(),
 							};
 
-							onReceiveMessage(activeChat, newMessage);
+							onReceiveMessage(
+								senderData.chatId.replace("@c.us", ""),
+								newMessage
+							);
 						}
 					}
 
@@ -56,22 +59,9 @@ const GetMessage = ({ activeChat, chats, onReceiveMessage }) => {
 
 		const interval = setInterval(fetchMessages, 5000);
 		return () => clearInterval(interval);
-	}, [activeChat, onReceiveMessage, request]);
+	}, [onReceiveMessage, request]);
 
-	const activeChatData = chats?.find((chat) => chat.phone === activeChat);
-
-	return (
-		<div className='messages'>
-			{activeChatData?.messages?.map((msg, i) => (
-				<div
-					key={i}
-					className={`message ${msg.from === "me" ? "my" : ""}`}>
-					<div className='text'>{msg.text}</div>
-					<div className='time'>{msg.timestamp.slice(0, 5)}</div>
-				</div>
-			))}
-		</div>
-	);
+	return null;
 };
 
 export default GetMessage;

@@ -3,7 +3,7 @@ import { useHttp } from "../../hooks/http.hook";
 import "./NewChat.scss";
 
 const NewChat = ({ setChats }) => {
-	const [phone, setPhone] = useState("79060972399");
+	const [phone, setPhone] = useState("79680603084");
 	const [error, setError] = useState("");
 	const { request } = useHttp();
 

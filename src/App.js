@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import LoginForm from "./components/loginForm/LoginForm";
 import ChatList from "./components/chatList/ChatList";
 import SidePanel from "./components/sidePanel/SidePanel";
-import ChatPerson from "./components/chatPerson/ChatPerson";
+import СhatActive from "./components/chatActive/СhatActive";
 
 import "./App.scss";
 
@@ -100,9 +100,11 @@ function App() {
 								<ChatList
 									chats={chats}
 									setChats={setChats}
+									setActiveChat={setActiveChat}
 								/>
-								<ChatPerson
+								<СhatActive
 									chats={chats}
+									activeChat={activeChat}
 									setChats={setChats}
 								/>
 							</>

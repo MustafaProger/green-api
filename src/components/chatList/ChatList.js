@@ -1,7 +1,12 @@
 import NewChat from "../newChat/NewChat";
 import "./ChatList.scss";
 
-const ChatList = ({ chats, setChats }) => {
+const ChatList = ({ chats, setChats, setActiveChat }) => {
+
+	function updateActiveChat(item) {
+		setActiveChat(item)
+	}
+
 	return (
 		<div className='chat-list'>
 			<h2>Чаты</h2>
@@ -11,7 +16,8 @@ const ChatList = ({ chats, setChats }) => {
 					return (
 						<div
 							key={i}
-							className='chat-list__item'>
+							className='chat-list__item'
+							onClick={() => updateActiveChat(item)}>
 							<span
 								aria-hidden='true'
 								data-icon='default-user'>
@@ -38,7 +44,7 @@ const ChatList = ({ chats, setChats }) => {
 				})}
 			</div>
 
-			<NewChat setChats={setChats}/>
+			<NewChat setChats={setChats} />
 		</div>
 	);
 };
