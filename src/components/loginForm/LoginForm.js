@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Modal from "../common/Modal";
+import Modal from "../modal/Modal";
 import "./LoginForm.scss";
 
 export default function LoginForm({ onLogin }) {

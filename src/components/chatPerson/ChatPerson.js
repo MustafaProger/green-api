@@ -1,5 +1,5 @@
 import GetMessage from "../getMessage/GetMessage";
-import Menu from "../downloadWhatsApp/DownloadWhatsApp";
+import DownloadWhatsApp from "../downloadWhatsApp/DownloadWhatsApp";
 import SendMessage from "../sendMessage/SendMessage";
 import "./ChatPerson.scss";
 
@@ -66,7 +66,7 @@ const ChatPerson = ({ chats, setChats }) => {
 					</div>
 				))
 			) : (
-				<Menu />
+				<DownloadWhatsApp />
 			)}
 		</div>
 	);
