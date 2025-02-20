@@ -25,48 +25,50 @@ function App() {
 	}, []);
 
 	return (
-		<BrowserRouter basename="green-api">
-			{isAuth ? <SidePanel /> : null}
+		<BrowserRouter basename='green-api'>
+			<div className='app'>
+				{isAuth ? <SidePanel /> : null}
 
-			<Routes>
-				<Route
-					path='/'
-					element={
-						isAuth ? (
-							<Navigate
-								to='/chat'
-								replace
-							/>
-						) : (
-							<LoginForm onLogin={() => setIsAuth(true)} />
-						)
-					}
-				/>
-				<Route
-					path='/chat'
-					element={
-						isAuth ? (
-							<>
-								<ChatList
-									chats={chats}
-									setChats={setChats}
-									setActiveChat={setActiveChat}
+				<Routes>
+					<Route
+						path='/'
+						element={
+							isAuth ? (
+								<Navigate
+									to='/chat'
+									replace
 								/>
-								<СhatActive
-									chats={chats}
-									activeChat={activeChat}
-									setChats={setChats}
+							) : (
+								<LoginForm onLogin={() => setIsAuth(true)} />
+							)
+						}
+					/>
+					<Route
+						path='/chat'
+						element={
+							isAuth ? (
+								<>
+									<ChatList
+										chats={chats}
+										setChats={setChats}
+										setActiveChat={setActiveChat}
+									/>
+									<СhatActive
+										chats={chats}
+										activeChat={activeChat}
+										setChats={setChats}
+									/>
+								</>
+							) : (
+								<Navigate
+									to='/'
+									replace
 								/>
-							</>
-						) : (
-							<Navigate
-								to='/'
-								replace
-							/>
-						)
-					}
-				/>
-			</Routes>
+							)
+						}
+					/>
+				</Routes>
+			</div>
 		</BrowserRouter>
 	);
 }

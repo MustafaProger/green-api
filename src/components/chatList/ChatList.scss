@@ -7,7 +7,8 @@
 	padding: 0 20px;
 	background-color: #eaebec;
 	border-right: 1px solid #d1d7db;
-
+	overflow-x: auto;
+	
 	.chat-list__items {
 		display: flex;
 		flex-direction: column;
